@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>StudyTech - Online Personalized Learning</title>
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Header Styling */
+.header {
+    background-color: #0a1931;
+    color: white;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.logo h1 {
+    font-size: 36px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    color: #00adb5;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+}
+
+.nav ul li a:hover {
+    background-color: #00adb5;
+    color: #0a1931;
+}
+
+/* Hero Section */
+.hero {
+    background: url('small-background.jpg') no-repeat center center/cover;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    z-index: 900;
+    animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.hero-content h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+    color: #00adb5;
+    letter-spacing: 1.5px;
+    animation: slideUp 1.5s ease-out;
+}
+
+@keyframes slideUp {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    max-width: 600px;
+    line-height: 1.8;
+    animation: fadeIn 1.8s ease-out;
+}
+
+/* Section Styling */
+.information, .features, .success {
+    background-color: #ffffff;
+    padding: 60px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #0a1931;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 4px solid #00adb5;
+    display: inline-block;
+    padding-bottom: 10px;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.information p, .features p, .success p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+    line-height: 1.8;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.features .feature-box {
+    background-color: #f9f9f9;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 2px solid #00adb5;
+    border-radius: 10px;
+    text-align: left;
+    max-width: 700px;
+    margin: 30px auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.features .feature-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.features .feature-box h3 {
+    color: #0a1931;
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.success p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #0a1931;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 40px 0;
+    position: relative;
+    z-index: 1000;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    letter-spacing: 1.5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+@keyframes footerSlideUp {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Animations */
+@keyframes backgroundScroll {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 0; }
+}
+
+body {
+    background: linear-gradient(135deg, #0a1931, #00adb5);
+    background-size: 400% 400%;
+    animation: backgroundScroll 15s ease infinite;
+}
+
+</style>
+<body>
+    <header class="header">
+        <div class="logo" action="/index">
+            <h1>StudyTech</h1>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="{{ url_for('services') }}">Services</a></li>
+                <li><a href="{{ url_for('contactus') }}">Contact Us</a></li>
+                <li><a href="{{ url_for('signin') }}" class="login-btn">Sign In/Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Welcome to StudyTech</h2>
+            <p>Your personalized learning platform for intermediate students. Achieve academic excellence with tailored learning resources and progress tracking.</p>
+        </div>
+    </section>
+
+    <section class="information">
+        <div class="container">
+            <h2 class="section-title">Personalized Learning for Every Student</h2>
+            <p>At StudyTech, we provide a comprehensive and adaptive learning experience for intermediate students. Our goal is to make learning accessible, engaging, and tailored to individual student needs, helping them excel academically.</p>
+            <p>We understand that every student learns at their own pace, so our platform adjusts to your learning style, ensuring you get the most out of every lesson.</p>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">What You Can Expect from StudyTech</h2>
+            <div class="feature-box">
+                <h3>Interactive Learning Experience</h3>
+                <p>StudyTech provides an interactive and engaging platform where students can participate in quizzes, view study material, and track their progress easily.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Personalized Dashboard</h3>
+                <p>Each student gets access to their personalized dashboard where they can monitor their performance, receive study recommendations, and track learning milestones.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Expert Tutors</h3>
+                <p>Our experienced tutors provide expert guidance and support to ensure students grasp key concepts and excel in their academic pursuits.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Comprehensive Resources</h3>
+                <p>We offer a variety of learning materials including video tutorials, notes, practice papers, and quizzes to help students prepare thoroughly for exams.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="success">
+        <div class="container">
+            <h2 class="section-title">Empowering Students to Succeed</h2>
+            <p>Our mission at StudyTech is to empower students to take control of their education by providing them with the tools and resources they need to succeed. Whether it's improving study habits, mastering difficult subjects, or preparing for exams, we are here to support every step of the way.</p>
+            <p>Our platform continuously evolves based on feedback and the latest advancements in education technology, ensuring that students always have the best learning experience available.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 StudyTech. All Rights Reserved.</p>
+
+    </footer>
+</body>
+</html>

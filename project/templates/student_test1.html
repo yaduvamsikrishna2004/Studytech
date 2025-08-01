@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1st Year Intermediate Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .quiz-container {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        .question {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+        @media (max-width: 600px) {
+            .quiz-container {
+                padding: 15px;
+            }
+            button {
+                padding: 8px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>1st Year Intermediate Quiz</h1>
+    <div class="quiz-container">
+        <form action="/submit-quiz" method="POST" id="quizForm">
+            <input type="hidden" id="student_name" name="student_name" value="{{ session['user'] }}">
+            <input type="hidden" id="quizID" name="quizID" value="2"> <!-- Replace with dynamic quiz ID -->
+            
+            <!-- Mathematics Questions -->
+            <h2>Mathematics</h2>
+            <div class="question">
+                <h3>1. What is the value of π (pi)?</h3>
+                <input type="radio" name="q1" value="a"> a) 2.14<br>
+                <input type="radio" name="q1" value="b"> b) 3.14<br>
+                <input type="radio" name="q1" value="c"> c) 3.41<br>
+                <input type="radio" name="q1" value="d"> d) 2.72<br>
+            </div>
+            <div class="question">
+                <h3>2. Solve for x: 2x + 3 = 11</h3>
+                <input type="radio" name="q2" value="a"> a) 4<br>
+                <input type="radio" name="q2" value="b"> b) 5<br>
+                <input type="radio" name="q2" value="c"> c) 6<br>
+                <input type="radio" name="q2" value="d"> d) 8<br>
+            </div>
+            <div class="question">
+                <h3>3. What is the derivative of x²?</h3>
+                <input type="radio" name="q3" value="a"> a) 2x<br>
+                <input type="radio" name="q3" value="b"> b) x<br>
+                <input type="radio" name="q3" value="c"> c) 3x<br>
+                <input type="radio" name="q3" value="d"> d) x²<br>
+            </div>
+            <div class="question">
+                <h3>4. Solve for x: 5x - 9 = 16</h3>
+                <input type="radio" name="q4" value="a"> a) 3<br>
+                <input type="radio" name="q4" value="b"> b) 5<br>
+                <input type="radio" name="q4" value="c"> c) 6<br>
+                <input type="radio" name="q4" value="d"> d) 7<br>
+            </div>
+            <div class="question">
+                <h3>5. What is the square root of 81?</h3>
+                <input type="radio" name="q5" value="a"> a) 8<br>
+                <input type="radio" name="q5" value="b"> b) 9<br>
+                <input type="radio" name="q5" value="c"> c) 7<br>
+                <input type="radio" name="q5" value="d"> d) 10<br>
+            </div>
+
+            <!-- Physics Questions -->
+            <h2>Physics</h2>
+            <div class="question">
+                <h3>6. What is the speed of light in a vacuum?</h3>
+                <input type="radio" name="q6" value="a"> a) 3 x 10<sup>8</sup> m/s<br>
+                <input type="radio" name="q6" value="b"> b) 3 x 10<sup>6</sup> m/s<br>
+                <input type="radio" name="q6" value="c"> c) 3 x 10<sup>4</sup> m/s<br>
+                <input type="radio" name="q6" value="d"> d) 3 x 10<sup>2</sup> m/s<br>
+            </div>
+            <div class="question">
+                <h3>7. What is Newton's First Law of Motion?</h3>
+                <input type="radio" name="q7" value="a"> a) Every action has an equal and opposite reaction<br>
+                <input type="radio" name="q7" value="b"> b) Force equals mass times acceleration<br>
+                <input type="radio" name="q7" value="c"> c) An object at rest stays at rest and an object in motion stays in motion<br>
+                <input type="radio" name="q7" value="d"> d) Energy cannot be created or destroyed<br>
+            </div>
+            <div class="question">
+                <h3>8. What is the formula for kinetic energy?</h3>
+                <input type="radio" name="q8" value="a"> a) KE = ½ mv²<br>
+                <input type="radio" name="q8" value="b"> b) KE = mv²<br>
+                <input type="radio" name="q8" value="c"> c) KE = ½ m²v<br>
+                <input type="radio" name="q8" value="d"> d) KE = m/v²<br>
+            </div>
+            <div class="question">
+                <h3>9. Who developed the theory of relativity?</h3>
+                <input type="radio" name="q9" value="a"> a) Isaac Newton<br>
+                <input type="radio" name="q9" value="b"> b) Albert Einstein<br>
+                <input type="radio" name="q9" value="c"> c) Galileo Galilei<br>
+                <input type="radio" name="q9" value="d"> d) Nikola Tesla<br>
+            </div>
+            <div class="question">
+                <h3>10. What is the unit of electrical resistance?</h3>
+                <input type="radio" name="q10" value="a"> a) Watt<br>
+                <input type="radio" name="q10" value="b"> b) Ampere<br>
+                <input type="radio" name="q10" value="c"> c) Volt<br>
+                <input type="radio" name="q10" value="d"> d) Ohm<br>
+            </div>
+
+            <!-- Chemistry Questions -->
+            <h2>Chemistry</h2>
+            <div class="question">
+                <h3>11. What is the chemical symbol for water?</h3>
+                <input type="radio" name="q11" value="a"> a) H<sub>2</sub>O<br>
+                <input type="radio" name="q11" value="b"> b) O<sub>2</sub><br>
+                <input type="radio" name="q11" value="c"> c) CO<sub>2</sub><br>
+                <input type="radio" name="q11" value="d"> d) H<sub>2</sub>O<sub>2</sub><br>
+            </div>
+            <div class="question">
+                <h3>12. What is the pH level of pure water?</h3>
+                <input type="radio" name="q12" value="a"> a) 6<br>
+                <input type="radio" name="q12" value="b"> b) 7<br>
+                <input type="radio" name="q12" value="c"> c) 8<br>
+                <input type="radio" name="q12" value="d"> d) 9<br>
+            </div>
+            <div class="question">
+                <h3>13. What is the molecular formula for methane?</h3>
+                <input type="radio" name="q13" value="a"> a) CH<sub>4</sub><br>
+                <input type="radio" name="q13" value="b"> b) C<sub>2</sub>H<sub>6</sub><br>
+                <input type="radio" name="q13" value="c"> c) CO<sub>2</sub><br>
+                <input type="radio" name="q13" value="d"> d) CH<sub>3</sub>OH<br>
+            </div>
+            <div class="question">
+                <h3>14. What is the atomic number of Carbon?</h3>
+                <input type="radio" name="q14" value="a"> a) 6<br>
+                <input type="radio" name="q14" value="b"> b) 12<br>
+                <input type="radio" name="q14" value="c"> c) 14<br>
+                <input type="radio" name="q14" value="d"> d) 16<br>
+            </div>
+            <div class="question">
+                <h3>15. What is the main gas in Earth's atmosphere?</h3>
+                <input type="radio" name="q15" value="a"> a) Oxygen<br>
+                <input type="radio" name="q15" value="b"> b) Nitrogen<br>
+                <input type="radio" name="q15" value="c"> c) Carbon Dioxide<br>
+                <input type="radio" name="q15" value="d"> d) Argon<br>
+            </div>
+
+            <button type="button" id="submitBtn">Submit Quiz</button>
+        </form>
+        <div class="result" id="resultDisplay"></div>
+    </div>
+    <script>
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            let score = 0;
+            const totalQuestions = 15;
+
+            // Define correct answers for 15 questions
+            const answers = {
+                q1: 'b', q2: 'a', q3: 'a', q4: 'a', q5: 'b', 
+                q6: 'a', q7: 'c', q8: 'a', q9: 'b', q10: 'd',
+                q11: 'a', q12: 'b', q13: 'a', q14: 'a', q15: 'b'
+            };
+
+            // Calculate score and collect answers
+            const userAnswers = {};
+            for (let question in answers) {
+                const userAnswer = document.querySelector(`input[name="${question}"]:checked`);
+                userAnswers[question] = userAnswer ? userAnswer.value : null;
+                if (userAnswer && userAnswer.value === answers[question]) {
+                    score++;
+                }
+            }
+
+            // Display result
+            const resultMessage = `You scored ${score} out of ${totalQuestions}.`;
+            document.getElementById('resultDisplay').innerText = resultMessage;
+
+            // Prepare data to send to the server
+            const formData = new FormData();
+            formData.append('student_name', document.getElementById('student_name').value);
+            formData.append('quizID', document.getElementById('quizID').value);
+
+            // Append user answers to formData
+            for (let question in userAnswers) {
+                formData.append(question, userAnswers[question]);
+            }
+
+            // Send the quiz results to the server
+            fetch('/submit-quiz', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>

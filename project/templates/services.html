@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>studytech service</title>
+</head>
+<style>
+    /* Services Section */
+#services {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.service-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    text-align: left;
+}
+
+.service-box:hover {
+    transform: translateY(-10px);
+}
+
+.service-box h3 {
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.service-box p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555;
+}
+
+@media (max-width: 768px) {
+    .service-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+<body>
+    <!-- Services Section -->
+<section id="services">
+    <h2>Our Services</h2>
+    <div class="service-container" action="/services">
+        <div class="service-box">
+            <h3>Personalized Learning Plans</h3>
+            <p>StudyTech creates customized learning paths tailored to each student's unique learning style, strengths, and pace. We use advanced algorithms to provide targeted lessons, activities, and resources that help students achieve their academic goals efficiently and effectively.</p>
+        </div>
+
+        <div class="service-box">
+            <h3>Interactive Quizzes & Assessments</h3>
+            <p>Our platform offers interactive quizzes and assessments designed to adapt to the student's progress. These quizzes help reinforce learning, identify areas for improvement, and boost engagement through gamified learning experiences.</p>
+        </div>
+
+        <div class="service-box">
+            <h3>Parental Monitoring & Insights</h3>
+            <p>Parents can easily track their child’s academic progress through detailed reports and performance dashboards. This feature provides insights into strengths, weaknesses, and overall progress, enabling parents to support their child's educational journey more effectively.</p>
+        </div>
+
+        <div class="service-box">
+            <h3>Admin Tools & Analytics</h3>
+            <p>Our admin portal gives educators and administrators access to powerful tools for managing student data, monitoring performance, and generating reports. The platform’s analytics provide valuable insights into the overall progress and help with data-driven decision-making.</p>
+        </div>
+
+        <div class="service-box">
+            <h3>Adaptive Content & Resources</h3>
+            <p>Our vast library of educational resources adapts to each student’s performance, ensuring that they always receive content that matches their current level. This adaptive approach keeps students challenged without being overwhelmed, enhancing the learning experience.</p>
+        </div>
+
+        <div class="service-box">
+            <h3>24/7 Learning Support</h3>
+            <p>StudyTech offers round-the-clock access to learning materials, quizzes, and support. Whether it's late-night study sessions or weekend practice, students can access personalized content anytime, ensuring that learning never stops.</p>
+        </div>
+    </div>
+</section>
+
+    
+</body>
+</html>

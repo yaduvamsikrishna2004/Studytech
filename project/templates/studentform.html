@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Profile Form</title>
+</head>
+<style>
+    /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Body Styles */
+body {
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 16px;
+}
+
+/* Form Container */
+.form-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 600px;
+    max-width: 100%;
+    animation: fadeInUp 1s ease;
+}
+
+/* Headings */
+h2 {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #007bff;
+    animation: fadeInDown 1.2s ease-out;
+}
+
+.section h3 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+    color: #007bff;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Input and Select Styles */
+form input, form select {
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #333;
+    background: #f9f9f9;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+form input:hover, form select:hover {
+    border-color: #0056b3;
+    background-color: #f1f5f9;
+}
+
+form input:focus, form select:focus {
+    border-color: #007bff;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Address Field Layout */
+.address-field {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Address Field Styling */
+.address-field input {
+    width: 48%; /* Two fields per row */
+    padding: 15px;
+    margin: 15px 0;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #333;
+    background: #f9f9f9;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.address-field input:hover {
+    border-color: #0056b3;
+    background-color: #f1f5f9;
+}
+
+.address-field input:focus {
+    border-color: #007bff;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Specific Styling for Temporary and Permanent Address */
+.address-field input[name="temporary_address"],
+.address-field input[name="permanent_address"] {
+    background-color: #f0f8ff;
+    border-color: #66afe9;
+}
+
+.address-field input[name="temporary_address"]:hover,
+.address-field input[name="permanent_address"]:hover {
+    background-color: #e7f2fc;
+}
+
+.address-field input[name="temporary_address"]:focus,
+.address-field input[name="permanent_address"]:focus {
+    border-color: #0056b3;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Improved Submit Button */
+/* Improved Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.submit-btn:hover {
+    background-color: #0056b3; /* Darker blue for hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 86, 179, 0.3);
+}
+
+.submit-btn:active {
+    background-color: #004085; /* Even darker blue for active state */
+    transform: translateY(1px);
+    box-shadow: 0 3px 8px rgba(0, 64, 128, 0.3);
+}
+
+/* Add a focus outline for accessibility */
+.submit-btn:focus {
+    outline: 2px solid #0056b3; /* Outline for accessibility */
+    outline-offset: 2px;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 30px;
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+
+
+    .address-field input {
+        width: 100%;
+    }
+}
+
+</style>
+<body>
+    <div class="form-container">
+        <form id="studentForm" action="/submit" method="POST">
+            <h2>Student Information</h2>
+            
+            <h3>1. Personal Information</h3>
+            <div class="input-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="first_name" required>
+            </div>
+            <div class="input-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="last_name" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="mobileNumber">Mobile Number</label>
+                <input type="text" id="mobileNumber" name="mobile_number" required>
+            </div>
+            <div class="input-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="input-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="input-group">
+                <label for="fatherName">Father's Name</label>
+                <input type="text" id="fatherName" name="father_name" required>
+            </div>
+            <div class="input-group">
+                <label for="fatherNumber">Father's Mobile Number</label>
+                <input type="text" id="fatherNumber" name="father_number" required>
+            </div>
+
+            <h3>2. Educational Details</h3>
+            <div class="input-group">
+                <label for="cgpa">10th CGPA</label>
+                <input type="number" id="cgpa" name=" Enter your 10th CGPA" required>
+            </div>
+            <div class="input-group">
+                <label for="schoolName">10th School Name</label>
+                <input type="text" id="schoolName" name="school_name" required>
+            </div>
+            <div class="input-group">
+                <label for="passout-year">10th Passout Year</label>
+                <select id="passout-year">
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <!-- More years as needed -->
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="class">Present Class</label>
+                <select id="class" name="class" required>
+                    <option value="inter1st">Inter 1st Year</option>
+                    <option value="inter2nd">Inter 2nd Year</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="board-study">Board of Study</label>
+                <select id="board-study">
+                    <option value="Andhra Pradesh Board of Intermediate Education">Andhra Pradesh Board of Intermediate Education</option>
+                    <option value="Telangana State Board of Intermediate Education">Telangana State Board of Intermediate Education</option>
+                    <option value="Maharashtra State Board of Secondary and Higher Secondary Education">Maharashtra State Board of Secondary and Higher Secondary Education</option>
+                    <option value="Tamil Nadu Board of Higher Secondary Education">Tamil Nadu Board of Higher Secondary Education</option>
+                    <option value="West Bengal Council of Higher Secondary Education">West Bengal Council of Higher Secondary Education</option>
+                    <option value="Karnataka Pre-University Education Board">Karnataka Pre-University Education Board</option>
+                    <option value="Uttar Pradesh Madhyamik Shiksha Parishad">Uttar Pradesh Madhyamik Shiksha Parishad</option>
+                    <option value="Bihar School Examination Board">Bihar School Examination Board</option>
+                    <option value="Gujarat Secondary and Higher Secondary Education Board">Gujarat Secondary and Higher Secondary Education Board</option>
+                    <option value="Punjab School Education Board">Punjab School Education Board</option>
+                    <option value="Himachal Pradesh Board of School Education">Himachal Pradesh Board of School Education</option>
+                    <option value="Rajasthan Board of Secondary Education">Rajasthan Board of Secondary Education</option>
+                    <option value="Madhya Pradesh Board of Secondary Education">Madhya Pradesh Board of Secondary Education</option>
+                    <option value="Kerala Board of Higher Secondary Education">Kerala Board of Higher Secondary Education</option>
+                    <option value="Chhattisgarh Board of Secondary Education">Chhattisgarh Board of Secondary Education</option>
+                    <option value="Odisha Council of Higher Secondary Education">Odisha Council of Higher Secondary Education</option>
+                    <option value="Assam Higher Secondary Education Council">Assam Higher Secondary Education Council</option>
+                    <option value="Jharkhand Academic Council">Jharkhand Academic Council</option>
+                    <option value="Meghalaya Board of School Education">Meghalaya Board of School Education</option>
+                    <option value="Manipur Council of Higher Secondary Education">Manipur Council of Higher Secondary Education</option>
+                    <option value="Tripura Board of Secondary Education">Tripura Board of Secondary Education</option>
+                    <option value="Nagaland Board of School Education">Nagaland Board of School Education</option>
+                    <option value="Mizoram Board of School Education">Mizoram Board of School Education</option>
+                    <option value="Sikkim Board of Secondary Education">Sikkim Board of Secondary Education</option>
+                    <option value="Goa Board of Secondary and Higher Secondary Education">Goa Board of Secondary and Higher Secondary Education</option>
+                    <option value="Arunachal Pradesh Secondary Education Board">Arunachal Pradesh Secondary Education Board</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="course">Course</label>
+                <select id="course" name="course" required>
+                    <option value="MPC">MPC</option>
+                    <option value="BiPC">BiPC</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="passout-year">Inter Passout Year</label>
+                <select id="passout-year">
+                    <option value="2024">2025</option>
+                    <option value="2023">2026</option>
+                    <option value="2022">2027</option>
+                    <option value="2021">2028</option>
+                    <!-- More years as needed -->
+                </select>
+            </div>
+
+            <h3>3. Address Details</h3>
+            <div class="input-group">
+                <label for="state">State</label>
+                <select id="state" name="state" required>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Tamil nadu">Tamil nadu</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="Uttar pradesh">Uttar Pradesh</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="punjab">Punjab</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="kerala">Kerala</option>
+                    <option value="Madhya pradesh">Madhya Pradesh</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <div class="input-group">
+                <label for="pincode">Pincode</label>
+                <input type="text" id="pincode" name="pincode" required>
+            </div>
+            <div class="input-group">
+                <label for="landmark">Landmark</label>
+                <input type="text" id="landmark" name="landmark">
+            </div>
+            <div class="input-group">
+                <label for="temporaryAddress">Temporary Address</label>
+                <textarea id="temporaryAddress" name="temporary_address" required></textarea>
+            </div>
+            <div class="input-group">
+                <label for="permanentAddress">Permanent Address</label>
+                <textarea id="permanentAddress" name="permanent_address" required></textarea>
+            </div>
+
+            <div id="formProgress" class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+    const form = document.getElementById('studentForm');
+    const progress = document.getElementById('progress');
+    const submitBtn = document.getElementById('submitBtn');
+        
+        form.addEventListener('input', () => {
+            const formData = new FormData(form);
+            const filledFields = Array.from(formData.values()).filter(value => value.trim() !== "").length;
+            const totalFields = 20; // Adjust based on total fields in form
+            const completionPercentage = (filledFields / totalFields) * 100;
+            
+            progress.style.width = `${completionPercentage}%`;
+        
+            if (completionPercentage >= 75) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        });
+        
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+        
+            // Trigger emoji animation
+            const emoji = document.createElement('div');
+            emoji.classList.add('emoji');
+            emoji.innerHTML = '🎉😄🎓';
+            form.appendChild(emoji);
+            emoji.style.display = 'block';
+        
+            setTimeout(() => {
+                emoji.style.display = 'none';
+                form.submit();
+            }, 3000);
+        });
+        </script>
+</body>
+</html>

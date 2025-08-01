@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Students</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Manage Students</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Mobile Number</th>
+                <th>Date of Birth</th>
+                <th>Age</th>
+                <th>Father's Name</th>
+                <th>Father's Number</th>
+                <th>CGPA</th>
+                <th>School Name</th>
+                <th>Passout Year</th>
+                <th>Class</th>
+                <th>Board of Study</th>
+                <th>Course</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.first_name }}</td>
+                <td>{{ student.last_name }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.mobile_number }}</td>
+                <td>{{ student.dob }}</td>
+                <td>{{ student.age }}</td>
+                <td>{{ student.father_name }}</td>
+                <td>{{ student.father_number }}</td>
+                <td>{{ student.cgpa }}</td>
+                <td>{{ student.school_name }}</td>
+                <td>{{ student.passout_year }}</td>
+                <td>{{ student.current_class }}</td>
+                <td>{{ student.board_study }}</td>
+                <td>{{ student.course }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

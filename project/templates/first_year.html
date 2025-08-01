@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Subject Selection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* styles.css */
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #74ebd5, #9face6);
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* Left Section Styling */
+        .left-section {
+            width: 40%;
+            background-color: #61a3ff3b; /* Bright coral color */
+            color: #ffffff;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            border-right: 5px solid #61a3ff3b; /* Darker border for contrast */
+        }
+
+        .left-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .left-section ul {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .left-section li {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .left-section button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            color: black;
+            background-color: white; /* Bright red color */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .left-section button:hover {
+            background-color: #c0392b; /* Darker red on hover */
+            transform: translateY(-3px);
+        }
+
+        /* Right Section Styling */
+        .right-section {
+            width: 60%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #ecf0f1;
+            position: relative;
+        }
+
+        .right-section h2 {
+            font-size: 3em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .right-section p {
+            font-size: 1.5em;
+            color: #333;
+            text-align: center;
+            max-width: 600px; /* Limit the width of the paragraph */
+            margin-bottom: 30px;
+        }
+
+        .info-section {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .info-section h3 {
+            margin: 0 0 10px 0;
+            color: #34495e;
+        }
+
+        .info-section p {
+            margin: 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+            .left-section, .right-section {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" action="first_year">
+        <!-- Left Side: Subjects -->
+        <div class="left-section">
+            <h2>Subjects</h2>
+            <ul>
+                <li><button onclick="window.location.href='#'">Maths</button></li>
+                <li><button onclick="window.location.href='#'">Physics</button></li>
+                <li><a href="{{ url_for('chemistry') }}"><button>Chemistry</button></a></li>
+            </ul>
+        </div>
+        
+        <!-- Right Side: Select Subjects Title -->
+        <div class="right-section">
+            <h2>Select Subjects</h2>
+            <p>Click on a subject from the left to view resources and materials to aid your learning.</p>
+            
+            <div class="info-section">
+                <h3>Why Choose Us?</h3>
+                <p>Our platform offers comprehensive coaching resources, expert tutorials, and a supportive community to help you excel in your studies.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Coaching Page</title>
+    <link rel="stylesheet" href="Styles2.css">
+</head>
+<style>
+    /* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e9f4f9; /* Soft background for a fresh look */
+    margin: 0;
+    padding: 0;
+    color: #2c3e50;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+    color: #34495e;
+    margin: 40px 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+h1:before {
+    content: "";
+    height: 5px;
+    width: 100px;
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    border-radius: 5px;
+}
+
+/* Navigation Styling */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Button Styles */
+button {
+    width: 260px;
+    padding: 15px;
+    font-size: 1.1em;
+    color: #fff;
+    background-color: #2c3e50;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    text-transform: capitalize;
+    position: relative;
+}
+
+button:before {
+    content: '';
+    background-color: #1abc9c;
+    height: 100%;
+    width: 0%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    ul {
+        gap: 15px;
+    }
+
+    button {
+        width: 80%;
+        padding: 12px;
+        font-size: 1em;
+    }
+}
+
+</style>
+<body>
+    <h1>Chemistry Syllabus</h1>
+    <nav>
+        <ul id="chapter-list">
+            <!-- JavaScript will populate the list here -->
+        </ul>
+    </nav>
+
+    <script>
+        // Define an array of chapters and their corresponding URLs
+        const chapters = [
+            { name: 'Chapter 1: Some Basic Concepts of Chemistry', url: '{{ url_for("chapter1") }}' },
+            { name: 'Chapter 2: States of Matter', url: '{{ url_for("chapter2") }}' },
+            { name: 'Chapter 3: Atomic Structure', url: '{{ url_for("chapter3") }}' },
+            { name: 'Chapter 4: Chemical Bonding and Molecular Structure', url: '{{ url_for("chapter4") }}' },
+            { name: 'Chapter 5: Chemical Thermodynamics', url: '{{ url_for("chapter5") }}' },
+            { name: 'Chapter 6: Solutions', url: '{{ url_for("chapter6") }}' },
+            { name: 'Chapter 7: Equilibrium', url: '{{ url_for("chapter7") }}' },
+            { name: 'Chapter 8: Redox Reactions and Electrochemistry', url: '{{ url_for("chapter8") }}' },
+            { name: 'Chapter 9: Chemical Kinetics', url: '{{ url_for("chapter9") }}' },
+            { name: 'Chapter 10: Hydrocarbons', url: '{{ url_for("chapter10") }}' },
+            { name: 'Chapter 11: Classification of Elements and Periodicity in Properties', url: '{{ url_for("chapter11") }}' },
+            { name: 'Chapter 12: General Principles and Process of Isolation of Metals', url: '{{ url_for("chapter12") }}' },
+            { name: 'Chapter 13: Surface Chemistry', url: '{{ url_for("chapter13") }}' },
+            { name: 'Chapter 14: S Block Elements (Alkali and Alkaline Earth Metals)', url: '{{ url_for("chapter14") }}' },
+            { name: 'Chapter 15: P Block Elements', url: '{{ url_for("chapter15") }}' },
+            { name: 'Chapter 16: D and F Block Elements', url: '{{ url_for("chapter16") }}' }
+        ];
+
+        // Select the chapter list container
+        const chapterList = document.getElementById('chapter-list');
+
+        // Loop through the chapters array and create list items dynamically
+        chapters.forEach(chapter => {
+            // Create a list item
+            const listItem = document.createElement('li');
+            
+            // Create a button for each chapter
+            const button = document.createElement('button');
+            button.textContent = chapter.name;
+            button.onclick = () => {
+                window.location.href = chapter.url;  // Set the button's action to redirect to the corresponding URL
+            };
+
+            // Append the button to the list item
+            listItem.appendChild(button);
+
+            // Append the list item to the chapter list
+            chapterList.appendChild(listItem);
+        });
+    </script>
+</body>
+</html>

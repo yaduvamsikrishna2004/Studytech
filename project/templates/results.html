@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        #chart-container {
+            width: 80%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Quiz Results</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Quiz ID</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody id="resultTable">
+            <!-- Results dynamically inserted here -->
+        </tbody>
+    </table>
+
+    <div id="chart-container">
+        <canvas id="performanceChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Fetch and display results
+        fetch('/api/results')
+        .then(response => response.json())
+        .then(data => {
+            const resultTable = document.getElementById('resultTable');
+            let tableContent = '';
+
+            data.results.forEach(result => {
+                tableContent += `<tr>
+                    <td>${result.student_name}</td>
+                    <td>${result.quiz_id}</td>
+                    <td>${result.score}</td>
+                </tr>`;
+            });
+
+            resultTable.innerHTML = tableContent;
+
+            // Display chart for performance analysis
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.results.map(r => r.student_name),
+                    datasets: [{
+                        label: 'Quiz Scores',
+                        data: data.results.map(r => r.score),
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

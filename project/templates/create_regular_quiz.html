@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<style>
+/* Reset some default styles */
+body, h1, form {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light grey background */
+    color: #333; /* Dark text */
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Main title styling */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007bff; /* Primary color */
+}
+
+/* Form styling */
+form {
+    background: white; /* White background for the form */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 600px; /* Limit the width */
+    margin: 0 auto; /* Center the form */
+}
+
+/* Input and label styling */
+label {
+    display: block; /* Block display for labels */
+    margin: 10px 0 5px; /* Margin for spacing */
+}
+
+input[type="text"] {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding for comfort */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 15px; /* Space below input fields */
+    transition: border-color 0.3s; /* Smooth transition for focus */
+}
+
+/* Input focus state */
+input[type="text"]:focus {
+    border-color: #007bff; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Buttons styling */
+button {
+    background-color: #007bff; /* Primary button color */
+    color: white; /* Text color */
+    padding: 10px 15px; /* Padding for buttons */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover */
+    margin-top: 10px; /* Margin for space above */
+}
+
+/* Button hover state */
+button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Questions block styling */
+.question-block {
+    background: #f9f9f9; /* Slightly darker background for questions */
+    padding: 15px; /* Padding for comfort */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 20px; /* Space below each question block */
+}
+
+/* Additional button for adding questions */
+#addQuestionButton {
+    background-color: #28a745; /* Green color for add button */
+}
+
+#addQuestionButton:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+</style>
+    <script>
+        function addQuestion() {
+            const questionsDiv = document.getElementById('questions');
+            const questionBlock = document.createElement('div');
+            questionBlock.classList.add('question-block');
+            questionBlock.innerHTML = `
+                <label for="question">Question:</label>
+                <input type="text" name="questions[]" placeholder="Question" required>
+                <label for="option1">Option 1:</label>
+                <input type="text" name="options[0][]" placeholder="Option 1" required>
+                <label for="option2">Option 2:</label>
+                <input type="text" name="options[1][]" placeholder="Option 2" required>
+                <label for="option3">Option 3:</label>
+                <input type="text" name="options[2][]" placeholder="Option 3" required>
+                <label for="option4">Option 4:</label>
+                <input type="text" name="options[3][]" placeholder="Option 4" required>
+                <label for="answer">Correct Answer:</label>
+                <input type="text" name="answers[]" placeholder="Correct Answer" required>
+            `;
+            questionsDiv.appendChild(questionBlock);
+        }
+    </script>
+</head>
+<body>
+    <h1>Create Quiz</h1>
+    <form method="POST" action="/create_regular_quiz">
+        <label for="quiz_title">Quiz Title:</label>
+        <input type="text" id="quiz_title" name="quiz_title" required>
+
+        <label for="quiz_id">Quiz ID:</label>
+        <input type="text" id="quiz_id" name="quiz_id" required>
+
+        <div id="questions">
+            <div class="question-block">
+                <label for="question">Question:</label>
+                <input type="text" name="questions[]" placeholder="Question" required>
+                <label for="option1">Option 1:</label>
+                <input type="text" name="options[0][]" placeholder="Option 1" required>
+                <label for="option2">Option 2:</label>
+                <input type="text" name="options[1][]" placeholder="Option 2" required>
+                <label for="option3">Option 3:</label>
+                <input type="text" name="options[2][]" placeholder="Option 3" required>
+                <label for="option4">Option 4:</label>
+                <input type="text" name="options[3][]" placeholder="Option 4" required>
+                <label for="answer">Correct Answer:</label>
+                <input type="text" name="answers[]" placeholder="Correct Answer" required>
+            </div>
+        </div>
+        <button type="button" onclick="addQuestion()">Add Another Question</button>
+        <button type="submit">Submit Quiz</button>
+    </form>
+</body>
+</html>
+

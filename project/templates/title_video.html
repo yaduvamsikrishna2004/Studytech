@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyTech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: black; /* Black background */
+            overflow: hidden;
+            font-family: 'Roboto', sans-serif; /* Main font */
+        }
+
+        .title {
+            font-size: 72px;
+            font-weight: bold;
+            color: silver; /* Silver text color */
+            text-align: center;
+            z-index: 1;
+            animation: flicker 1.5s infinite alternate;
+            filter: drop-shadow(0 0 5px rgba(192, 192, 192, 0.5)); /* Silver shadow */
+        }
+
+        .subtitle {
+            font-family: 'Montserrat', sans-serif; /* Subtitle font */
+            font-size: 36px; /* Size of the subtitle */
+            color: silver; /* Silver text color */
+            text-align: center;
+            z-index: 1;
+            margin-top: 10px; /* Space between title and subtitle */
+            filter: drop-shadow(0 0 5px rgba(192, 192, 192, 0.5)); /* Silver shadow */
+        }
+
+        @keyframes flicker {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="title" action="/">StudyTech</div>
+<div class="subtitle">Specialized for Students</div>
+
+<script>
+    setTimeout(() => {
+        // Optionally redirect after 3 seconds
+        window.location.href = '/index'; // Change to desired URL
+    }, 3000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Tech - Student Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+             /* General Styles */
+             body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            height: 100%;
+            background-color: #f0f0f5; /* Softer background color */
+            color: #333;
+        }
+
+        /* Top Title Bar */
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0a1931; /* Teal color */
+            padding: 15px 0;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: relative; /* To position settings button */
+        }
+
+        #title {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        #settings {
+            position: absolute;
+            right: 30px;
+            cursor: pointer;
+        }
+
+        #settings img {
+            width: 30px;
+            transition: transform 0.2s;
+        }
+
+        #settings img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Settings Dropdown Menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            right: 0; /* Align dropdown to the right */
+            width: 200px;
+            border-radius: 5px;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Main Content Layout */
+        .container {
+            display: flex;
+            height: calc(100% - 70px); /* Subtract header height */
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #263238; /* Dark slate color */
+            color: white;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: width 0.3s;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            padding: 15px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #37474f;
+            transition: background-color 0.3s, font-weight 0.2s;
+        }
+
+        .sidebar li:hover {
+            background-color: #37474f; /* Highlight color */
+            font-weight: bold;
+        }
+
+        /* Content Section */
+        .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 10px;
+        }
+
+        /* Top Section */
+        .top-section {
+            flex-basis: 50%;
+            background-color: #e0f2f1; /* Light teal for top section */
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-section h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #0a1931; /* Darker text for contrast */
+        }
+
+        /* Bottom Section */
+        .bottom-section {
+            flex-basis: 50%;
+            background-color: #f1f8e9; /* Light green for bottom section */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .bottom-section h2 {
+            text-align: left; /* Align heading to the left */
+            color: #388e3c; /* Darker green for heading */
+            font-size: 20px;
+            font-weight: bold;
+            border-left: 5px solid #388e3c; /* Left border for highlight */
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+
+        .bottom-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .bottom-section li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .bottom-section li::before {
+            content: '★'; /* Star icon before each message */
+            color: #ff9800; /* Orange for star icon */
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        /* Button Styles */
+        button {
+            background-color: #009688; /* Teal button */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #00796b; /* Darker teal on hover */
+            transform: scale(1.05);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+            }
+
+            .content {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Title Bar -->
+    <header>
+        <div id="title">Study Tech</div>
+
+        <!-- Settings Icon with Dropdown -->
+        <div action="/student_dashboard" id="settings" class="dropdown">
+            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="Settings" />
+            <div class="dropdown-content">
+                <a href="#" onclick="editPersonalInfo()">Edit Personal Information</a>
+                <a href="#" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="container">
+        <!-- Left Sidebar -->
+        <nav class="sidebar">
+            <ul>
+                <li onclick="showSection('courses')">Courses</li>
+                <li onclick="showSection('quizzes')">Quizzes</li>
+                <li onclick="showSection('results')">Results</li>
+            </ul>
+        </nav>
+
+        <!-- Content Section (Top and Bottom) -->
+        <section class="content">
+            <!-- Top Half (Options) -->
+            <div class="top-section" id="top-section">
+                <h2>Select an option from the left sidebar</h2>
+            </div>
+
+            <!-- Bottom Half (Highlights) -->
+            <div class="bottom-section" id="bottom-section">
+                <h2>Highlights</h2>
+                <ul>
+                    <li>Every weekend quiz is conducted on every Friday.</li>
+                    <li>Every day you need to attend the regular quiz.</li>
+                    <li>Every student must listen to the class properly.</li>
+                    <li>Weekend quiz results will be updated every Sunday.</li>
+                    <li>If you learn today, you can give better performance in future days, so learn properly!</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Function to show the necessary details in the top and bottom sections
+        function showSection(section) {
+            const topSection = document.getElementById('top-section');
+    
+            // Update content based on the section clicked
+            if (section === 'courses') {
+    topSection.innerHTML = "<h2>Courses Available</h2>" +
+       "<button onclick=\"window.location.href='{{ url_for('first_year') }}'\">First Year</button>" +
+        "<button onclick=\"window.location.href='course2.html'\">Second Year</button>";
+
+
+
+
+            } // Assuming this is part of your existing function
+            else if (section === 'quizzes') {
+    // Clear previous content and add new buttons
+    topSection.innerHTML = '<h2>Quiz Types</h2>' +
+        '<button onclick="window.location.href=\'/student_test\'">Regular Quiz</button>' +
+        '<button onclick="window.location.href=\'/student_test1\'">Weekend Quiz</button>';
+}
+
+
+        else if (section === 'results') {
+                topSection.innerHTML = '<h2>Your Results</h2>' +
+                    '<p>Your quiz results will appear here.</p>' +
+                    "<button onclick=\"window.location.href='{{ url_for('results') }}'\">Results</button>";
+            }
+        }
+    
+        // Functions for Settings Dropdown
+        function editPersonalInfo() {
+            alert("Edit Personal Information clicked!");
+        }
+    
+        function logout() {
+            alert("You have been logged out!");
+        }
+    </script>
+    
+    
+    
+    
+</body>
+</html>
